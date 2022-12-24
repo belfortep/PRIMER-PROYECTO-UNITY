@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Transform>().position = new Vector3(gameObject.transform.position.x + 5, gameObject.transform.position.y, gameObject.transform.position.z);
         //el transform tiene una forma mas corta y no hace falta el getComponent
         //y del transform queremos su posicion
+
+        
     }
 
     // Update is called once per frame
@@ -37,15 +39,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey("left")) {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1000f * Time.deltaTime, 0));
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
 
         if (Input.GetKey("right")) {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000f * Time.deltaTime, 0));
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (Input.GetKeyDown("up") && canJump) {
             canJump = false;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2000f));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 200f));
         }
 
     }
